@@ -59,11 +59,14 @@
 .chatbot-container {
   width: 500px;
   height: 600px;
-  background: linear-gradient(165deg,
-    #0d6b61 0%,
-    #118a7c 30%,
-    #1a9d8f 60%,
-    #20b2a2 100%
+  background: linear-gradient(
+    180deg,
+    #001a18 0%,      /* Very dark teal at top */
+    #00332f 20%,     /* Dark underwater teal */
+    #004d47 40%,     /* Deep teal */
+    #006b63 60%,     /* Mid teal */
+    #00857b 80%,     /* Brighter teal */
+    #009e93 100%     /* Brightest teal */
   );
   border-radius: 25px;
   box-shadow: 0 8px 32px rgba(17, 138, 124, 0.25);
@@ -157,7 +160,7 @@
 .message {
   max-width: 75%;
   padding: 14px 20px;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 500;
   line-height: 1.6;
   letter-spacing: 0.3px;
@@ -461,7 +464,7 @@
   border-radius: 20px; /* Slightly reduced */
   cursor: pointer;
   color: white;
-  font-size: 16px; /* Slightly reduced */
+  font-size: 14px; /* Slightly reduced */
   font-weight: 500;
   transition: all 0.3s ease;
   border: 1px solid rgba(255, 255, 255, 0.1);
