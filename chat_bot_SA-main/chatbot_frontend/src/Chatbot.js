@@ -39,19 +39,24 @@ function Chatbot() {
         message: input.trim(),
       });
 
-      const botResponse = response.data?.response || "Sorry, I couldn't process that.";
       const botMessage = { 
-        text: botResponse, 
+        text: response.data.response, 
         sender: 'bot',
-        showQuestions: true  // Add this to show questions with every bot response
+        showQuestions: true,
+        suggestedQuestions: response.data.suggested_questions  // Get questions from backend
       };
       setMessages((prevMessages) => [...prevMessages, botMessage]);
     } catch (error) {
       console.error('Error:', error);
+      const defaultResponse = await axios.post('http://127.0.0.1:5000/chat', {
+        message: "default"
+      });
+      
       const errorMessage = {
-        text: 'Sorry, i was precisely trained to answer systemic altruism related questions.',
+        text: defaultResponse.data.response,
         sender: 'bot',
-        showQuestions: true  // Add this to show questions even with error messages
+        showQuestions: true,
+        suggestedQuestions: defaultResponse.data.suggested_questions  // Get default questions
       };
       setMessages((prevMessages) => [...prevMessages, errorMessage]);
     } finally {
@@ -65,14 +70,8 @@ function Chatbot() {
     }
   };
 
-  const predefinedQuestions = [
-    "What is systemic altruism?",
-    "How to join systemic altruism?",
-    "What are the key principles of systemic altruism?",
-    "Who are the partners?"
-  ];
-
   const handleQuestionClick = async (question) => {
+    // Add user's question to messages
     setMessages(prevMessages => [...prevMessages, {
       text: question,
       sender: 'user'
@@ -85,17 +84,24 @@ function Chatbot() {
         message: question
       });
       
+      // Add bot's response with suggested questions
       setMessages(prevMessages => [...prevMessages, {
         text: response.data.response,
         sender: 'bot',
-        showQuestions: true  // Add this to show questions with question responses
+        showQuestions: true,
+        suggestedQuestions: response.data.suggested_questions
       }]);
     } catch (error) {
       console.error('Error:', error);
+      const defaultResponse = await axios.post('http://127.0.0.1:5000/chat', {
+        message: "default"
+      });
+      
       setMessages(prevMessages => [...prevMessages, {
-        text: "Sorry, I couldn't process your question. Please try again.",
+        text: defaultResponse.data.response,
         sender: 'bot',
-        showQuestions: true  // Add this to show questions with error messages
+        showQuestions: true,
+        suggestedQuestions: defaultResponse.data.suggested_questions
       }]);
     }
     
@@ -104,12 +110,26 @@ function Chatbot() {
 
   useEffect(() => {
     if (isChatOpen) {
-      const firstMessage = { 
-        text: "Hello! My name is SA. How may I help you?", 
-        sender: 'bot',
-        showQuestions: true
+      // Get initial message with suggested questions from backend
+      const getInitialMessage = async () => {
+        try {
+          const response = await axios.post('http://127.0.0.1:5000/chat', {
+            message: "hello"
+          });
+          
+          const firstMessage = {
+            text: response.data.response,
+            sender: 'bot',
+            showQuestions: true,
+            suggestedQuestions: response.data.suggested_questions
+          };
+          setMessages([firstMessage]);
+        } catch (error) {
+          console.error('Error getting initial message:', error);
+        }
       };
-      setMessages([firstMessage]);
+      
+      getInitialMessage();
     }
   }, [isChatOpen]);
 
@@ -180,9 +200,10 @@ function Chatbot() {
                     {convertLinksToAnchors(message.text)}
                   </div>
                 </div>
-                {message.showQuestions && (
+                {/* Always show suggested questions for bot messages */}
+                {message.sender === 'bot' && message.suggestedQuestions && (
                   <div className="predefined-questions">
-                    {predefinedQuestions.map((question, qIndex) => (
+                    {message.suggestedQuestions.map((question, qIndex) => (
                       <button
                         key={qIndex}
                         className="predefined-question"
