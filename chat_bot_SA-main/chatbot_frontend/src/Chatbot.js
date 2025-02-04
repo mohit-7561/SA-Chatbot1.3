@@ -40,13 +40,18 @@ function Chatbot() {
       });
 
       const botResponse = response.data?.response || "Sorry, I couldn't process that.";
-      const botMessage = { text: botResponse, sender: 'bot' };
+      const botMessage = { 
+        text: botResponse, 
+        sender: 'bot',
+        showQuestions: true  // Add this to show questions with every bot response
+      };
       setMessages((prevMessages) => [...prevMessages, botMessage]);
     } catch (error) {
       console.error('Error:', error);
       const errorMessage = {
         text: 'Sorry, i was precisely trained to answer systemic altruism related questions.',
         sender: 'bot',
+        showQuestions: true  // Add this to show questions even with error messages
       };
       setMessages((prevMessages) => [...prevMessages, errorMessage]);
     } finally {
@@ -63,7 +68,7 @@ function Chatbot() {
   const predefinedQuestions = [
     "What is systemic altruism?",
     "How to join systemic altruism?",
-    "What are the projects we are working on?",
+    "What are the key principles of systemic altruism?",
     "Who are the partners?"
   ];
 
@@ -82,13 +87,15 @@ function Chatbot() {
       
       setMessages(prevMessages => [...prevMessages, {
         text: response.data.response,
-        sender: 'bot'
+        sender: 'bot',
+        showQuestions: true  // Add this to show questions with question responses
       }]);
     } catch (error) {
       console.error('Error:', error);
       setMessages(prevMessages => [...prevMessages, {
         text: "Sorry, I couldn't process your question. Please try again.",
-        sender: 'bot'
+        sender: 'bot',
+        showQuestions: true  // Add this to show questions with error messages
       }]);
     }
     

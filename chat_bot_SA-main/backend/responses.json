@@ -1,69 +1,151 @@
 {
-    "what is systemic altruism": "Systemic altruism focuses on addressing the root causes of social issues through sustainable solutions. If you'd like to know more, feel free to ask about its principles, examples, or how you can contribute.",
+    "what is systemic altruism": {
+        "response": "Systemic altruism focuses on addressing the root causes of social issues through sustainable solutions. If you'd like to know more, feel free to ask about its principles, examples, or how you can contribute.",
+        "suggested_questions": [
+            "How can I contribute?",
+            "What are some effective systemic altruism projects?",
+            "How does systemic altruism differ from traditional charity?",
+            "What are the key principles of systemic altruism?"
+        ]
+    },
     
-    "how can i contribute": "You can contribute by supporting organizations, volunteering, and advocating for systemic changes. Want to explore how businesses or governments support systemic altruism?",
+    "how can i contribute": {
+        "response": "You can contribute by supporting organizations, volunteering, and advocating for systemic changes. Want to explore how businesses or governments support systemic altruism?",
+        "suggested_questions": [
+            "How do governments support systemic altruism?",
+            "How can businesses adopt systemic altruism?",
+            "What are some effective systemic altruism projects?",
+            "How to join systemic altruism?"
+        ]
+    },
 
-    "how to join systemic altruism": "You can join through Internships, Startupthons, Content Creation Contests, and You can also reach out to us on our social media platforms https://systemicaltruism.com/#Contact.",
+    "how to join systemic altruism": {
+        "response": "You can join through Internships, Startupthons, Content Creation Contests, and You can also reach out to us on our social media platforms https://systemicaltruism.com/#Contact.",
+        "suggested_questions": [
+            "What are the projects we are working on?",
+            "Who are the partners?",
+            "How can I contribute?",
+            "What is systemic altruism?"
+        ]
+    },
 
-    "Who are the partners": "Some of Our Partners are Persist Ventures(https://persistventures.com/), The Moon Party (https://www.themoonparty.com/), PurpleRock (https://www.purplerock.com/), and many more.",
-    
-    "examples of systemic altruism": "Examples include policy reforms, educational programs, and healthcare accessibility initiatives. Would you like to dive deeper into any specific area?",
-    
-    "what are the key principles of systemic altruism": "Key principles include sustainability, equity, evidence-based approaches, and collaboration. Interested in how these principles are applied in real projects?",
-    
-    "how does systemic altruism differ from traditional charity": "Traditional charity often addresses symptoms, whereas systemic altruism targets root causes to create long-term impact. Want to explore specific case studies?",
-    
-    "why is systemic altruism important": "It ensures that social change efforts have long-term, meaningful, and scalable impacts. Would you like to learn how it's being implemented in different sectors?",
-    
-    "what are some effective systemic altruism projects": "Effective projects include healthcare accessibility reforms, climate change mitigation policies, and educational equity initiatives. Want to discuss successful case studies?",
-    
-    "how can businesses adopt systemic altruism": "Businesses can adopt systemic altruism by aligning their corporate social responsibility (CSR) initiatives with sustainable and systemic goals. Curious about practical steps they can take?",
-    
-    "how do governments support systemic altruism": "Governments can support systemic altruism through policy reforms, funding initiatives, and promoting public-private partnerships. Would you like to know about specific government policies?",
-    
-    "what are the biggest challenges in systemic altruism": "Challenges include resource allocation, political resistance, and measuring long-term impact. Want to explore strategies to overcome these challenges?",
-    
-    "how does systemic altruism address poverty": "It addresses poverty by focusing on structural inequalities, access to education, and economic opportunities. Interested in successful poverty-alleviation models?",
-    
-    "who are the key stakeholders in systemic altruism": "Stakeholders include governments, non-profits, businesses, academic institutions, and local communities. Want to discuss their specific roles in more detail?",
-    
-    "how can systemic altruism improve healthcare": "By advocating for universal healthcare access, policy reforms, and better resource distribution. Interested in examples of healthcare initiatives?",
-    
-    "what is the role of education in systemic altruism": "Education plays a key role by empowering individuals, creating awareness, and fostering critical thinking for sustainable solutions. Would you like to explore educational strategies?",
-    
-    "can systemic altruism solve climate change": "It provides long-term solutions through policy advocacy, sustainable business practices, and community-led initiatives. Curious about climate-specific initiatives?",
-    
-    "what is altruism": "Altruism refers to the selfless concern for the well-being of others. Want to explore different forms of altruism?",
-    
-    "why do people practice altruism": "People practice altruism for ethical reasons, personal fulfillment, or social responsibility. Would you like to discuss psychological aspects?",
-    
-    "how can altruism improve society": "Altruism fosters a sense of community, reduces inequality, and promotes collective well-being. Curious about real-world examples?",
-    
-    "what are some examples of altruistic behavior": "Volunteering, donating to charity, and helping a stranger in need are common examples. Want to learn how to develop altruistic habits?",
-    
-    "is altruism innate or learned": "Studies suggest that altruism can be both an innate human trait and a learned behavior influenced by culture and upbringing. Want to explore scientific research on this?",
-    
-    "what is the difference between altruism and philanthropy": "Philanthropy typically involves financial contributions, while altruism encompasses a broader range of selfless acts. Want to know how they complement each other?",
-    
-    "how can I encourage altruism in my community": "You can encourage altruism by organizing community events, volunteering, and raising awareness. Need ideas for specific initiatives?",
-    
-    "how do systemic solutions benefit society": "They create long-term, sustainable impacts by addressing social challenges at their root. Curious about their effectiveness?",
-    
-    "how can systemic altruism address inequality": "Through policies that promote equal opportunities, access to education, and economic empowerment. Want to discuss successful approaches?",
-    
-    "how can technology support systemic altruism": "Technology can enable data-driven decision-making, resource optimization, and greater transparency. Interested in tech-driven initiatives?",
-    
-    "what policies support systemic altruism": "Policies focusing on healthcare access, education reform, and environmental sustainability support systemic altruism. Want to know how policies are implemented?",
-    
-    "how can systemic altruism improve mental health support": "By advocating for mental health policies, funding, and community-based interventions. Want to explore specific mental health programs?",
-    
-    "what is the economic impact of systemic altruism": "Systemic altruism can lead to long-term economic growth by addressing foundational social issues. Want to know how businesses benefit?",
-    
-    "hello": "Hi there! How can I assist you with systemic altruism today? Feel free to ask anything or explore related topics.",
-    
-    "hi": "Hello! Feel free to ask me anything about systemic altruism. I can also suggest areas you might find interesting.",
-    
-    "thanks": "You're welcome! Let me know if you have more questions. Want to explore related topics?",
-    
-    "default": "Sorry, I don't understand. Could you please rephrase your question? You can also ask about systemic altruism, altruism in general, or related topics."
+    "who are the partners": {
+        "response": "Some of Our Partners are Persist Ventures(https://persistventures.com/), The Moon Party (https://www.themoonparty.com/), PurpleRock (https://www.purplerock.com/), and many more.",
+        "suggested_questions": [
+            "What are the projects we are working on?",
+            "How to join systemic altruism?",
+            "How can I contribute?",
+            "What is systemic altruism?"
+        ]
+    },
+
+    "examples of systemic altruism": {
+        "response": "Examples include policy reforms, educational programs, and healthcare accessibility initiatives. Would you like to dive deeper into any specific area?",
+        "suggested_questions": [
+            "What is systemic altruism?",
+            "How to join systemic altruism?",
+            "What are the projects we are working on?",
+            "Who are the partners?"
+        ]
+    },
+
+    "what are the key principles of systemic altruism": {
+        "response": "Key principles include sustainability, equity, evidence-based approaches, and collaboration. Interested in how these principles are applied in real projects?",
+        "suggested_questions": [
+            "What are some effective systemic altruism projects?",
+            "How does systemic altruism differ from traditional charity?",
+            "Why is systemic altruism important?",
+            "How can businesses adopt systemic altruism?"
+        ]
+    },
+
+    "how does systemic altruism differ from traditional charity": {
+        "response": "Traditional charity often addresses symptoms, whereas systemic altruism targets root causes to create long-term impact. Want to explore specific case studies?",
+        "suggested_questions": [
+            "What are some effective systemic altruism projects?",
+            "Why is systemic altruism important?",
+            "What are the key principles of systemic altruism?",
+            "How can I contribute?"
+        ]
+    },
+
+    "why is systemic altruism important": {
+        "response": "It ensures that social change efforts have long-term, meaningful, and scalable impacts. Would you like to learn how it's being implemented in different sectors?",
+        "suggested_questions": [
+            "What is systemic altruism?",
+            "How to join systemic altruism?",
+            "What are the projects we are working on?",
+            "Who are the partners?"
+        ]
+    },
+
+    "what are some effective systemic altruism projects": {
+        "response": "Effective projects include healthcare accessibility reforms, climate change mitigation policies, and educational equity initiatives. Want to discuss successful case studies?",
+        "suggested_questions": [
+            "How can businesses adopt systemic altruism?",
+            "How do governments support systemic altruism?",
+            "Why is systemic altruism important?",
+            "How can I contribute?"
+        ]
+    },
+
+    "how can businesses adopt systemic altruism": {
+        "response": "Businesses can adopt systemic altruism by aligning their corporate social responsibility (CSR) initiatives with sustainable and systemic goals. Curious about practical steps they can take?",
+        "suggested_questions": [
+            "How do governments support systemic altruism?",
+            "What are some effective systemic altruism projects?",
+            "Who are the partners?",
+            "What are the key principles of systemic altruism?"
+        ]
+    },
+
+    "how do governments support systemic altruism": {
+        "response": "Governments can support systemic altruism through policy reforms, funding initiatives, and promoting public-private partnerships. Would you like to know about specific government policies?",
+        "suggested_questions": [
+            "What is systemic altruism?",
+            "How to join systemic altruism?",
+            "What are the projects we are working on?",
+            "Who are the partners?"
+        ]
+    },
+
+    "hello": {
+        "response": "Hi there! How can I assist you with systemic altruism today? Feel free to ask anything or explore related topics.",
+        "suggested_questions": [
+            "What is systemic altruism?",
+            "How to join systemic altruism?",
+            "What are the projects we are working on?",
+            "Who are the partners?"
+        ]
+    },
+
+    "hi": {
+        "response": "Hello! Feel free to ask me anything about systemic altruism. I can also suggest areas you might find interesting.",
+        "suggested_questions": [
+            "What is systemic altruism?",
+            "How can I contribute?",
+            "What are some effective systemic altruism projects?",
+            "Who are the partners?"
+        ]
+    },
+
+    "thanks": {
+        "response": "You're welcome! Let me know if you have more questions. Want to explore related topics?",
+        "suggested_questions": [
+            "What is systemic altruism?",
+            "How to join systemic altruism?",
+            "What are the projects we are working on?",
+            "Who are the partners?"
+        ]
+    },
+
+    "default": {
+        "response": "Sorry, I don't understand. Could you please rephrase your question? You can also ask about systemic altruism, altruism in general, or related topics.",
+        "suggested_questions": [
+            "What is systemic altruism?",
+            "How to join systemic altruism?",
+            "What are the projects we are working on?",
+            "Who are the partners?"
+        ]
+    }
 }
