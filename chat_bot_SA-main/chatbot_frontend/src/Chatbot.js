@@ -7,47 +7,51 @@ function Chatbot() {
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
   const [isChatOpen, setIsChatOpen] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
   const messagesContainerRef = useRef(null);
 
+  const handleClose = () => {
+    setIsClosing(true);
+    setIsChatOpen(false);  // Immediately hide the chat container
+    
+    // Only reset the closing state after animation
+    setTimeout(() => {
+      setIsClosing(false);
+    }, 500);
+  };
+
   const toggleChat = () => {
-    setIsChatOpen(!isChatOpen);
+    if (!isChatOpen) {
+      setIsChatOpen(true);
+    }
   };
 
   const handleSend = async () => {
     if (!input.trim()) return;
 
-    const userMessage = input;
+    const userMessage = { text: input.trim(), sender: 'user' };
+    setMessages((prevMessages) => [...prevMessages, userMessage]);
     setInput('');
-    
-    // Add user message
-    setMessages(prevMessages => [...prevMessages, {
-      text: userMessage,
-      sender: 'user'
-    }]);
-
     setLoading(true);
 
     try {
-      const response = await axios.post('http://localhost:5000/chat', {
-        message: userMessage
+      const response = await axios.post('http://127.0.0.1:5000/chat', {
+        message: input.trim(),
       });
 
-      // Add bot message with showQuestions flag
-      setMessages(prevMessages => [...prevMessages, {
-        text: response.data.response,
-        sender: 'bot',
-        showQuestions: true  // Add this to every bot response
-      }]);
+      const botResponse = response.data?.response || "Sorry, I couldn't process that.";
+      const botMessage = { text: botResponse, sender: 'bot' };
+      setMessages((prevMessages) => [...prevMessages, botMessage]);
     } catch (error) {
       console.error('Error:', error);
-      setMessages(prevMessages => [...prevMessages, {
-        text: "Sorry, I couldn't process your request. Please try again.",
+      const errorMessage = {
+        text: 'Sorry, i was precisely trained to answer systemic altruism related questions.',
         sender: 'bot',
-        showQuestions: true  // Also show questions after error message
-      }]);
+      };
+      setMessages((prevMessages) => [...prevMessages, errorMessage]);
+    } finally {
+      setLoading(false);
     }
-
-    setLoading(false);
   };
 
   const handleKeyPress = (e) => {
@@ -62,26 +66,6 @@ function Chatbot() {
     "What are the projects we are working on?",
     "Who are the partners?"
   ];
-
-  useEffect(() => {
-    if (isChatOpen) {
-      const firstMessage = { 
-        text: "Hello! My name is SA. How may I help you?", 
-        sender: 'bot',
-        showQuestions: true
-      };
-      setMessages([firstMessage]);
-    }
-  }, [isChatOpen]);
-
-  useEffect(() => {
-    if (messagesContainerRef.current) {
-      messagesContainerRef.current.scrollTop = messagesContainerRef.current.scrollHeight;
-    }
-  }, [messages]); 
-
-  const botIcon = "🤖";  
-  const userIcon = "👤";  
 
   const handleQuestionClick = async (question) => {
     setMessages(prevMessages => [...prevMessages, {
@@ -98,31 +82,41 @@ function Chatbot() {
       
       setMessages(prevMessages => [...prevMessages, {
         text: response.data.response,
-        sender: 'bot',
-        showQuestions: true  // Add this to show questions after response
+        sender: 'bot'
       }]);
     } catch (error) {
       console.error('Error:', error);
       setMessages(prevMessages => [...prevMessages, {
         text: "Sorry, I couldn't process your question. Please try again.",
-        sender: 'bot',
-        showQuestions: true  // Show questions even after error
+        sender: 'bot'
       }]);
     }
     
     setLoading(false);
   };
 
-  // Add this helper function to convert URLs to clickable links
+  useEffect(() => {
+    if (isChatOpen) {
+      const firstMessage = { 
+        text: "Hello! My name is SA. How may I help you?", 
+        sender: 'bot',
+        showQuestions: true
+      };
+      setMessages([firstMessage]);
+    }
+  }, [isChatOpen]);
+
+  useEffect(() => {
+    if (messagesContainerRef.current) {
+      messagesContainerRef.current.scrollTop = messagesContainerRef.current.scrollHeight;
+    }
+  }, [messages]);
+
   const convertLinksToAnchors = (text) => {
-    // Regular expression to match URLs
     const urlRegex = /(https?:\/\/[^\s]+)/g;
-    
-    // Split the text by URLs and map through parts
     const parts = text.split(urlRegex);
     
     return parts.map((part, index) => {
-      // Check if this part matches a URL
       if (part.match(urlRegex)) {
         return (
           <a 
@@ -144,21 +138,10 @@ function Chatbot() {
     });
   };
 
-  // Update the Message component to use the link converter
-  const Message = ({ text, sender }) => (
-    <div className={`message ${sender}-message`}>
-      <div className="message-icon">
-        {sender === 'bot' ? botIcon : userIcon}
-      </div>
-      <div className="message-text">
-        {convertLinksToAnchors(text)}
-      </div>
-    </div>
-  );
-
   return (
     <div className="chat-widget">
-      {!isChatOpen && (  
+      {/* Show chat button when chat is not open */}
+      {!isChatOpen && (
         <button 
           className="chat-button"
           onClick={toggleChat}
@@ -168,11 +151,12 @@ function Chatbot() {
         </button>
       )}
 
+      {/* Show chat container with animation */}
       {isChatOpen && (
-        <div className="chatbot-container">
+        <div className={`chatbot-container ${isClosing ? 'closing' : ''}`}>
           <div className="chatbot-header">
             <span className="header-title">Systemic Altruism Chatbot</span>
-            <button className="close-button" onClick={toggleChat} aria-label="Close chat">
+            <button className="close-button" onClick={handleClose} aria-label="Close chat">
               <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
               </svg>
@@ -181,7 +165,14 @@ function Chatbot() {
           <div className="chatbot-messages" ref={messagesContainerRef}>
             {messages.map((message, index) => (
               <div key={index}>
-                <Message text={message.text} sender={message.sender} />
+                <div className={`message ${message.sender}-message`}>
+                  <div className="message-icon">
+                    {message.sender === 'bot' ? '🤖' : '👤'}
+                  </div>
+                  <div className="message-text">
+                    {convertLinksToAnchors(message.text)}
+                  </div>
+                </div>
                 {message.showQuestions && (
                   <div className="predefined-questions">
                     {predefinedQuestions.map((question, qIndex) => (
